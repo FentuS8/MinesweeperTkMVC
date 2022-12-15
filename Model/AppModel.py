@@ -11,17 +11,17 @@ class AppModel(object):
         self.root = tkinter.Tk()
         self.status = MWMenuController.getStatus()
 
-    def get_status(self):
-        return self.status
-
-    if get_status() == 'menu':
-        MWMenuController()
-    elif get_status() == 'eazy':
-        Controller(10, 10, 40)
-    elif get_status() == 'normal':
-        Controller(10, 10, 40)
-    elif get_status() == 'hard':
-        Controller(10, 10, 40)
+    # def get_status(self):
+    #     return self.status
+    #
+    # if get_status() == 'menu':
+    #     MWMenuController()
+    # elif get_status() == 'eazy':
+    #     Controller(10, 10, 40)
+    # elif get_status() == 'normal':
+    #     Controller(10, 10, 40)
+    # elif get_status() == 'hard':
+    #     Controller(10, 10, 40)
 
 
 

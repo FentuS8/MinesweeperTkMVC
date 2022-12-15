@@ -1,4 +1,6 @@
 import tkinter
+
+from Controller.Controller import Controller
 from View.MenuView import MWMenuView
 
 
@@ -14,14 +16,14 @@ class MWMenuController():
     def getStatus(self):
         return self.status
 
-    def eazy(self):
+    def eazy(self, event):
         self.root.destroy()
-        self.status = 'eazy'
+        Controller(10, 10, 10)
 
-    def normal(self):
+    def normal(self, event):
         self.root.destroy()
         self.status = 'normal'
 
-    def hard(self):
+    def hard(self, event):
         self.root.destroy()
         self.status = 'hard'
