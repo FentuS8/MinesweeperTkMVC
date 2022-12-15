@@ -1,7 +1,7 @@
 import tkinter
 
-from Controller.Controller import Controller
 from View.MenuView import MWMenuView
+from Model.GameModel import MWGameModel
 
 
 class MWMenuController():
@@ -16,14 +16,14 @@ class MWMenuController():
     def getStatus(self):
         return self.status
 
-    def eazy(self, event):
+    def easy(self, event):
         self.root.destroy()
-        Controller(10, 10, 10)
+        MWGameModel(11, 11, 40)
 
-    def normal(self, event):
+    def medium(self, event):
         self.root.destroy()
-        self.status = 'normal'
+        MWGameModel(14, 14, 70)
 
     def hard(self, event):
         self.root.destroy()
-        self.status = 'hard'
+        MWGameModel(18, 18, 140)

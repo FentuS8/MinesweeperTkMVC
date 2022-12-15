@@ -16,13 +16,13 @@ class ViewPanel():
         self.menu = tkinter.Frame(root)
         self.menu.pack()
 
-        self.btn = tkinter.Button(self.menu, text="EAZY")
+        self.btn = tkinter.Button(self.menu, text="EASY")
         self.btn.pack()
-        self.btn.bind("<Button>", controller.eazy)
+        self.btn.bind("<Button>", controller.easy)
 
-        self.btn = tkinter.Button(self.menu, text="NORMAL")
+        self.btn = tkinter.Button(self.menu, text="MEDIUM")
         self.btn.pack()
-        self.btn.bind("<Button>", controller.normal)
+        self.btn.bind("<Button>", controller.medium)
 
         self.btn2 = tkinter.Button(self.menu, text="HARD")
         self.btn2.pack()

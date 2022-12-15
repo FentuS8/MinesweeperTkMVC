@@ -18,10 +18,10 @@ class MVGameView(tkinter.Frame):
     # верхняя панель
     def topBar(self):
         self.reset_btn = tkinter.Button(self.master, width=5, text='Reset')
-        self.reset_btn.grid(row=0, column=int(self.width/4), columnspan=2)
+        self.reset_btn.grid(row=0, column=int(self.width/4), columnspan=3)
 
         self.menu_btn = tkinter.Button(self.master, width=5, text='Menu')
-        self.menu_btn.grid(row=0, column=int(self.width/4)*2, columnspan=2)
+        self.menu_btn.grid(row=0, column=int(self.width/4)*2, columnspan=3)
         # self.menu_btn.bind("<Button>")
 
         self.mines_left_str = tkinter.StringVar()
@@ -30,9 +30,9 @@ class MVGameView(tkinter.Frame):
         self.mines_left.grid(row=0, column=int(self.width/4)*3, columnspan=3)
 
         self.time_str = tkinter.StringVar()
-        self.time_str.set('Ur time is: 0')
+        self.time_str.set('Ur time is: 00:00:00')
         self.time = tkinter.Label(textvariable=self.time_str)
-        self.time.grid(row=0, column=int(self.width/4)*4, columnspan=2)
+        self.time.grid(row=0, column=int(self.width/4)*4, columnspan=3)
 
     # добавление ячеек
     def addCells(self):
@@ -47,8 +47,6 @@ class MVGameView(tkinter.Frame):
         if condition:
             self.mines_left.grid_remove()
         else:
-            # self.panel.lose_text.grid_remove()
-            # self.panel.win_text.grid_remove()
             pass
 
     # победа вывод
