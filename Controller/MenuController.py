@@ -1,7 +1,6 @@
 import tkinter
 
 from View.MenuView import MWMenuView
-# from Model.AppModel import AppModel
 
 
 class MWMenuController():
@@ -11,7 +10,7 @@ class MWMenuController():
         self.root.title("Menu")
         self.root.geometry("200x110")
         self.root.mainloop()
-        self.status = 'easy'
+        self.status = 'menu'
 
     def getStatus(self):
         return self.status
