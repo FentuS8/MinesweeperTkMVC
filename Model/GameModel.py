@@ -2,6 +2,7 @@ import random
 import tkinter
 
 from View.GameView import MVGameView
+from Controller.MenuController import MWMenuController
 
 
 class MWGameModel(object):
@@ -34,7 +35,9 @@ class MWGameModel(object):
                     '<Button-3>',
                     lambda event, index=[i, j]: self.toFlag(event, index)
                 )
-        self.view.reset_btn.bind('<Button>', self.newGame)
+        self.view.menu_btn.bind('<Button>', MWMenuController.setStatus('menu'))
+
+        # self.view.reset_btn.bind('<Button-1>', self.newGame)
 
     # создание поля
     def createGrid(self):
@@ -56,19 +59,20 @@ class MWGameModel(object):
                 row, column = coordinates()
             self.grid[row][column] = 'bomb'
 
-
         for i in self.grid:
             print(i)
 
+    #region newgame
     # обновление всего
-    def newGame(self, event):
-        self.zeros = []
-        self.opened_cells = []
-        self.flagged_cells = []
-        self.state = None
-        self.view.deleteCells()
-        self.view = MVGameView(self.root, self.width, self.height, self.mines_num)
-        self.bindClicks()
+    # def newGame(self, event):
+    #     self.zeros = []
+    #     self.opened_cells = []
+    #     self.flagged_cells = []
+    #     self.state = None
+    #     self.view.deleteCells()
+    #     self.view = MVGameView(self.root, self.width, self.height, self.mines_num)
+    #     self.bindClicks()
+    #endregion
 
     # проверка открытия клетки
     def open(self, event, index):

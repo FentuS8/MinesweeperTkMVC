@@ -1,6 +1,6 @@
 from Controller.MenuController import MWMenuController
-# from Model.AppModel import AppModel
+from Model.AppModel import AppModel
 
 if __name__ == '__main__':
-    MWMenuController()
+    AppModel()
 # выбрать модель точкой входа

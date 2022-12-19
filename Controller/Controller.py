@@ -11,7 +11,6 @@ class Controller(object):
         self.width = width
         self.height = height
         self.mines_num = mines_num
-        # self.model = MWGameModel(self.width, self.height, self.mines_num)
 
     # выигрыш
     def win(self):

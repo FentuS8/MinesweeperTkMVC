@@ -1,7 +1,7 @@
 import tkinter
 
 from View.MenuView import MWMenuView
-from Model.GameModel import MWGameModel
+# from Model.AppModel import AppModel
 
 
 class MWMenuController():
@@ -11,19 +11,22 @@ class MWMenuController():
         self.root.title("Menu")
         self.root.geometry("200x110")
         self.root.mainloop()
-        self.status = 'menu'
+        self.status = 'easy'
 
     def getStatus(self):
         return self.status
 
+    def setStatus(self, status):
+        self.status = status
+
     def easy(self, event):
         self.root.destroy()
-        MWGameModel(11, 11, 40)
+        self.setStatus('easy')
 
     def medium(self, event):
         self.root.destroy()
-        MWGameModel(14, 14, 70)
+        self.setStatus('medium')
 
     def hard(self, event):
         self.root.destroy()
-        MWGameModel(18, 18, 140)
+        self.setStatus('hard')
