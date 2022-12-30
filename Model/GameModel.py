@@ -1,25 +1,29 @@
 import random
 import tkinter
+from datetime import datetime
 
 from View.GameView import MVGameView
-from Controller.MenuController import MWMenuController
 
 
 class MWGameModel(object):
 
-    def __init__(self, width, height, mines_num):
+    def __init__(self, width, height, mines_num, time):
         self.width = width
         self.height = height
         self.mines_num = mines_num
+        self.time = time
         self.root = tkinter.Tk()
-        self.view = MVGameView(self.root, width, height, mines_num)
-        self.createGrid()
-        self.minesCreate()
+        self.view = MVGameView(self.root, width, height, mines_num, time)
+        self.root.title("Minesweeper")
         self.zeros = []
         self.opened_cells = []
         self.flagged_cells = []
         self.state = None
+        self.createGrid()
+        self.minesCreate()
         self.bindClicks()
+        self.counter_label()
+        self.root.mainloop()
 
     # бинд нажатий открыть/флажок
     def bindClicks(self):
@@ -35,9 +39,7 @@ class MWGameModel(object):
                     '<Button-3>',
                     lambda event, index=[i, j]: self.toFlag(event, index)
                 )
-        self.view.menu_btn.bind('<Button>', MWMenuController.setStatus('menu'))
-
-        # self.view.reset_btn.bind('<Button-1>', self.newGame)
+        # self.view.menu_btn.bind('<Button>', MWMenuController.setStatus('menu'))
 
     # создание поля
     def createGrid(self):
@@ -61,18 +63,6 @@ class MWGameModel(object):
 
         for i in self.grid:
             print(i)
-
-    #region newgame
-    # обновление всего
-    # def newGame(self, event):
-    #     self.zeros = []
-    #     self.opened_cells = []
-    #     self.flagged_cells = []
-    #     self.state = None
-    #     self.view.deleteCells()
-    #     self.view = MVGameView(self.root, self.width, self.height, self.mines_num)
-    #     self.bindClicks()
-    #endregion
 
     # проверка открытия клетки
     def open(self, event, index):
@@ -189,3 +179,22 @@ class MWGameModel(object):
             button_value.configure(bg="grey", text="")
             self.flagged_cells.remove(button_index)
         self.updateMinesCounter()
+
+    # секундомер
+    def counter_label(self):
+        def count():
+            global time_str
+            if self.state is None:
+                tt = datetime.fromtimestamp(self.time)
+                time_str = tt.strftime("%M:%S")
+                self.view.time_str.set('Ur time is: ' + str(time_str))
+                self.view.stopwatch.after(1000, count)
+                self.time += 1
+            return time_str
+        count()
+
+    # открытие меню
+    def destroyGame(self):
+        from Model.AppModel import AppModel
+        AppModel()
+        self.root.exit()

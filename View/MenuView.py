@@ -1,7 +1,7 @@
 import tkinter
 
 
-class MWMenuView():
+class MWMenuView:
     def __init__(self, master, controller):
         self.controller = controller
         self.frame = tkinter.Frame(master)
@@ -9,7 +9,7 @@ class MWMenuView():
         self.viewPanel = ViewPanel(master, controller)
 
 
-class ViewPanel():
+class ViewPanel:
     def __init__(self, root, controller):
         self.controller = controller
 
@@ -28,5 +28,5 @@ class ViewPanel():
         self.btn2.pack()
         self.btn2.bind("<Button>", controller.hard)
 
-        self.info = tkinter.Label(text='ALLERT!\nU may lose from the first step!')
+        self.info = tkinter.Label(self.menu, text='ALLERT!\nU may lose from the first step!')
         self.info.pack()

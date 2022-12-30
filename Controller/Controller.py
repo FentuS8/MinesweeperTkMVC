@@ -1,8 +1,3 @@
-import tkinter
-import time
-
-from Model.GameModel import MWGameModel
-from View.GameView import MVGameView
 
 
 class Controller(object):
@@ -14,16 +9,12 @@ class Controller(object):
 
     # выигрыш
     def win(self):
-        self.view.deleteCells('bomb')
-        self.view.win()
-        self.state = 'Win'
+        self.model.state = 'Win'
 
     # проигрыш
     def lose(self):
-        self.view.deleteCells('bomb')
         for i in range(self.width):
             for j in range(self.height):
-                value = self.emptyNeighbor([i, j])
-                self.openCell(value, [i, j])
-        self.view.lose()
-        self.state = 'Lose'
+                value = self.model.emptyNeighbor([i, j])
+                self.model.openCell(value, [i, j])
+        self.model.state = 'Lose'
